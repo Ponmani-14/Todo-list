@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  {% load static %}
+  <style>
+    body {
+      
+    font-family: Arial, sans-serif;
+
+    /* MULTIPLE BACKGROUNDS */
+    background:url("{% static 'images/coffe.png' %}");                  /* image layer */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .container {
+      padding: 30px;
+      border-radius: 15px;
+      width: 350px;
+      box-shadow: 0 4px 10px black;
+      border: 3px solid transparent;
+      background: linear-gradient(#f8f6f2, #f1e2c0) padding-box,
+            linear-gradient(to right, #b4ada3, #cfc5bc) border-box;
+    }
+
+    .softGlow {
+      color: white;
+      text-shadow: 0 0 10px rgb(83, 57, 8);
+    }
+
+    input[type="text"] {
+      width: 75%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 18px;
+      border: none;
+      background: #4e3c33;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #171e1f;
+      text-decoration: none;
+      text-shadow: 0 0 10px rgb(187, 125, 9);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="softGlow">📝 My To-Do List</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" name="title" placeholder="Enter task..." required>
+      <button type="submit">Add</button>
+    </form>
+
+    <ul>
+      {% for task in tasks %}
+      <li>
+        {{ task.title }}
+        <a href="{% url 'delete_task' task.id %}">Delete</a>
+      </li>
+      {% empty %}
+      <li>No tasks yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</body>
+</html>

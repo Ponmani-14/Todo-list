@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyo
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+static/
+
+# Environment & Secrets
+.env
+.env.*
+venv/
+env/
+.venv/
+python_project/
+
+# Migrations (Optional — only ignore if needed)
+# */migrations/*
+# !*/migrations/__init__.py
+
+# pytest
+.pytest_cache/
+.coverage
+coverage.xml
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# MySQL dump files
+*.sql
+*.dump
+
